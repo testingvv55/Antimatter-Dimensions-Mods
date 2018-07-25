@@ -16,9 +16,9 @@ var TIER_NAMES = [ null, "first", "second", "third", "fourth", "fifth", "sixth",
 var DISPLAY_NAMES = [ null, "First", "Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh", "Eighth" ];
 var forceHardReset = false;
 var player = {
-    money: new Decimal(10),
+    money: new Decimal(20),
     tickSpeedCost: new Decimal(1000),
-    tickspeed: new Decimal(1000),
+    tickspeed: new Decimal(500),
     firstCost: new Decimal(10),
     secondCost: new Decimal(100),
     thirdCost: new Decimal(10000),
@@ -53,7 +53,7 @@ var player = {
     eightPow: new Decimal(1),
     sacrificed: new Decimal(0),
     achievements: [],
-    infinityUpgrades: [],
+    infinityUpgrades: ["skipReset1","skipReset2","skipReset3","skipResetGalaxy"],
     challenges: [],
     currentChallenge: "",
     infinityPoints: new Decimal(0),
@@ -447,7 +447,7 @@ function getGalaxyCostScalingStart() {
 
 function getGalaxyRequirement() {
     let amount = 80 + ((player.galaxies) * 60);
-    if (player.timestudy.studies.includes(42)) amount = 80 + ((player.galaxies) * 52)
+    if (player.timestudy.studies.includes(42)) amount = 80 + ((player.galaxies) * 48)
     if (player.currentChallenge == "challenge4") amount = 99 + ((player.galaxies) * 90)
 
     let galaxyCostScalingStart = getGalaxyCostScalingStart()
@@ -1000,7 +1000,7 @@ document.getElementById("infiMult").onclick = function() {
         player.infinityPoints = player.infinityPoints.minus(player.infMultCost)
         player.infMult = player.infMult.times(2);
         player.autoIP = player.autoIP.times(2);
-        player.infMultCost = player.infMultCost.times(10)
+        player.infMultCost = player.infMultCost.times(4)
         document.getElementById("infiMult").innerHTML = "Multiply infinity points from all sources by 2 <br>currently: "+shorten(player.infMult.times(kongIPMult)) +"x<br>Cost: "+shortenCosts(player.infMultCost)+" IP"
         if (player.autobuyers[11].priority !== undefined && player.autobuyers[11].priority !== null && player.autoCrunchMode == "amount") player.autobuyers[11].priority = player.autobuyers[11].priority.times(2);
         if (player.autoCrunchMode == "amount") document.getElementById("priority12").value = formatValue("Scientific", player.autobuyers[11].priority, 2, 0);
@@ -1029,17 +1029,17 @@ function buyEternityUpgrade(name, cost) {
 
 function buyEPMult() {
     if (player.eternityPoints.gte(player.epmultCost)) {
-        player.epmult = player.epmult.times(5)
-        player.eternityBuyer.limit = player.eternityBuyer.limit.times(5)
+        player.epmult = player.epmult.times(10)
+        player.eternityBuyer.limit = player.eternityBuyer.limit.times(10)
         document.getElementById("priority13").value = formatValue("Scientific", player.eternityBuyer.limit, 2, 0);
         player.eternityPoints = player.eternityPoints.minus(player.epmultCost)
-        let count = player.epmult.ln()/Math.log(5)
+        let count = player.epmult.ln()/Math.log(10)
         if (player.epmultCost.gte(new Decimal("1e4000"))) player.epmultCost = Decimal.pow(1000, count + Math.pow(count-1334, 1.2)).times(500)
         else if (player.epmultCost.gte(new Decimal("1e1300"))) player.epmultCost = Decimal.pow(1000, count).times(500)
         else if (player.epmultCost.gte(Number.MAX_VALUE)) player.epmultCost = Decimal.pow(500, count).times(500)
         else if (player.epmultCost.gte(new Decimal("1e100"))) player.epmultCost = Decimal.pow(100, count).times(500)
         else player.epmultCost = Decimal.pow(50, count).times(500)
-        document.getElementById("epmult").innerHTML = "You gain 5 times more EP<p>Currently: "+shortenDimensions(player.epmult)+"x<p>Cost: "+shortenDimensions(player.epmultCost)+" EP"
+        document.getElementById("epmult").innerHTML = "You gain 10 times more EP<p>Currently: "+shortenDimensions(player.epmult)+"x<p>Cost: "+shortenDimensions(player.epmultCost)+" EP"
         updateEternityUpgrades()
     }
 }
@@ -1598,7 +1598,7 @@ function galaxyReset() {
     player = {
         money: player.achievements.includes("r111") ? player.money : new Decimal(10),
         tickSpeedCost: new Decimal(1000),
-        tickspeed: new Decimal(1000),
+        tickspeed: new Decimal(500),
         firstCost: new Decimal(10),
         secondCost: new Decimal(100),
         thirdCost: new Decimal(10000),
@@ -1989,8 +1989,8 @@ function gainedInfinityPoints() {
     else if (player.achievements.includes("r103")) div = 307.8;
 
     var ret = Decimal.pow(10, player.money.e/div -0.75).times(player.infMult).times(kongIPMult)
-    if (player.timestudy.studies.includes(41)) ret = ret.times(Decimal.pow(1.2, player.galaxies + player.replicanti.galaxies))
-    if (player.timestudy.studies.includes(51)) ret = ret.times(1e15)
+    if (player.timestudy.studies.includes(41)) ret = ret.times(Decimal.pow(1.5, player.galaxies + player.replicanti.galaxies))
+    if (player.timestudy.studies.includes(51)) ret = ret.times(1e30)
     if (player.timestudy.studies.includes(141)) ret = ret.times(new Decimal(1e45).dividedBy(Decimal.pow(15, Math.log(player.thisInfinityTime+1)*Math.pow(player.thisInfinityTime+1, 0.125))).max(1))
     if (player.timestudy.studies.includes(142)) ret = ret.times(1e25)
     if (player.timestudy.studies.includes(143)) ret = ret.times(Decimal.pow(15, Math.log(player.thisInfinityTime+1)*Math.pow(player.thisInfinityTime+1, 0.125)))
@@ -2002,7 +2002,7 @@ function gainedInfinityPoints() {
 
 function gainedEternityPoints() {
     var ret = Decimal.pow(5, player.infinityPoints.plus(gainedInfinityPoints()).e/308 -0.7).times(player.epmult).times(kongEPMult)
-    if (player.timestudy.studies.includes(61)) ret = ret.times(10)
+    if (player.timestudy.studies.includes(61)) ret = ret.times(100)
     if (player.timestudy.studies.includes(121)) ret = ret.times(((253 - averageEp.dividedBy(player.epmult).dividedBy(10).min(248).max(3))/5)) //x300 if tryhard, ~x60 if not
     else if (player.timestudy.studies.includes(122)) ret = ret.times(35)
     else if (player.timestudy.studies.includes(123)) ret = ret.times(Math.sqrt(1.39*player.thisEternity/10))
@@ -2788,7 +2788,7 @@ document.getElementById("bigcrunch").onclick = function () {
         if (player.challenges.length == 20) giveAchievement("Anti-antichallenged");
         if (!player.break || player.currentChallenge != "") {
             var add = new Decimal(player.infMult.times(kongIPMult))
-            if (player.timestudy.studies.includes(51)) add = add.times(1e15)
+            if (player.timestudy.studies.includes(51)) add = add.times(1e30)
             player.infinityPoints = player.infinityPoints.plus(add);
             addTime(player.thisInfinityTime, add)
         }
@@ -2826,9 +2826,9 @@ document.getElementById("bigcrunch").onclick = function () {
         auto = autoS; //only allow autoing if prev crunch was autoed
         autoS = true;
         player = {
-            money: new Decimal(10),
+            money: new Decimal(20),
             tickSpeedCost: new Decimal(1000),
-            tickspeed: new Decimal(1000),
+            tickspeed: new Decimal(500),
             firstCost: new Decimal(10),
             secondCost: new Decimal(100),
             thirdCost: new Decimal(10000),
@@ -3126,9 +3126,9 @@ function eternity(force, auto) {
         }
         player.challenges = temp
         player = {
-            money: new Decimal(10),
+            money: new Decimal(20),
             tickSpeedCost: new Decimal(1000),
-            tickspeed: new Decimal(1000),
+            tickspeed: new Decimal(500),
             firstCost: new Decimal(10),
             secondCost: new Decimal(100),
             thirdCost: new Decimal(10000),
@@ -3439,9 +3439,9 @@ function startChallenge(name, target) {
   if(player.options.challConf || name == "" ? true : (name.includes("post")) ? confirm("You will start over with just your infinity upgrades, and achievements. You need to reach a set goal with special conditions. NOTE: The rightmost infinity upgrade column doesn't work on challenges.") : confirm("You will start over with just your infinity upgrades, and achievements. You need to reach infinity with special conditions. NOTE: The rightmost infinity upgrade column doesn't work on challenges.")) {
     if (player.currentChallenge != "") document.getElementById(player.currentChallenge).textContent = "Start"
     player = {
-        money: new Decimal(10),
+        money: new Decimal(20),
         tickSpeedCost: new Decimal(1000),
-        tickspeed: new Decimal(1000),
+        tickspeed: new Decimal(500),
         firstCost: new Decimal(10),
         secondCost: new Decimal(100),
         thirdCost: new Decimal(10000),
@@ -3930,9 +3930,9 @@ function startEternityChallenge(name, startgoal, goalIncrease) {
     if (player.eternityChallUnlocked == 0 || parseInt(name.split("c")[1]) !== player.eternityChallUnlocked) return
     if((player.options.challConf) || name == "" ? true :  (confirm("You will start over with just your time studies, eternity upgrades and achievements. You need to reach a set IP with special conditions."))) {
         player = {
-            money: new Decimal(10),
+            money: new Decimal(20),
             tickSpeedCost: new Decimal(1000),
-            tickspeed: new Decimal(1000),
+            tickspeed: new Decimal(500),
             firstCost: new Decimal(10),
             secondCost: new Decimal(100),
             thirdCost: new Decimal(10000),
@@ -4483,10 +4483,6 @@ setInterval(function() {
 
     if (player.money.gte(new Decimal("1e2000")) || Object.keys(player.eternityChalls).length > 0 || player.eternityChallUnlocked !== 0) document.getElementById("challTabButtons").style.display = "table"
 
-    document.getElementById("kongip").textContent = "Double your IP gain from all sources (additive). Forever. Currently: x"+kongIPMult+", next: x"+(kongIPMult==1? 2: kongIPMult+2)
-    document.getElementById("kongep").textContent = "Triple your EP gain from all sources (additive). Forever. Currently: x"+kongEPMult+", next: x"+(kongEPMult==1? 3: kongEPMult+3)
-    document.getElementById("kongdim").textContent = "Double all your normal dimension multipliers (multiplicative). Forever. Currently: x"+kongDimMult+", next: x"+(kongDimMult*2)
-    document.getElementById("kongalldim").textContent = "Double ALL the dimension multipliers (Normal, Infinity, Time) (multiplicative until 32x). Forever. Currently: x"+kongAllDimMult+", next: x"+((kongAllDimMult < 32) ? kongAllDimMult * 2 : kongAllDimMult + 32)
     document.getElementById("eternityPoints2").innerHTML = "You have <span class=\"EPAmount2\">"+shortenDimensions(player.eternityPoints)+"</span> Eternity point"+((player.eternityPoints.eq(1)) ? "." : "s.")
 
     document.getElementById("eternitybtn").style.display = (player.infinityPoints.gte(player.eternityChallGoal) && (player.infDimensionsUnlocked[7] || player.eternities > 24)) ? "inline-block" : "none"
@@ -4879,7 +4875,7 @@ function gameLoop(diff) {
         }
     }
     let interval = player.replicanti.interval
-    if (player.timestudy.studies.includes(62)) interval = interval/3
+    if (player.timestudy.studies.includes(62)) interval = interval/4
     if (player.timestudy.studies.includes(133) || player.replicanti.amount.gt(Number.MAX_VALUE)) interval *= 10
     if (player.timestudy.studies.includes(213)) interval /= 20
     if (player.replicanti.amount.lt(Number.MAX_VALUE) && player.achievements.includes("r134")) interval /= 2
@@ -5809,14 +5805,6 @@ document.getElementById("hiddenheader").style.display = "none";
 window.onload = function() {
     startInterval()
     setTimeout(function() {
-        playFabLogin();
-        updateKongPurchases()
-        try {
-            if (kongregate.services.getGameAuthToken() === undefined) document.getElementById("shopbtn").style.display = "none"
-        } catch(e) {
-            console.log(e)
-            document.getElementById("shopbtn").style.display = "none"
-        }
         document.getElementById("container").style.display = "block"
         document.getElementById("loading").style.display = "none"
     }, 1000)

@@ -3,31 +3,13 @@
 <html>
 
 <head>
-    <title>Antimatter Dimensions</title>
+    <title>Antimatter Dimensions NG^</title>
     <link rel="icon" type="image/png" href="icon.png">
-    <meta name="Antimatter Dimensions" content="A game about huge numbers and watching them go up." charset="utf-8"/>
-    <h1 id="hiddenheader" style="display: none">Antimatter Dimensions</h1>
-    <script type="text/javascript" src='https://cdn1.kongregate.com/javascripts/kongregate_api.js'></script>
+    <meta name="Antimatter Dimensions NG^" content="A game about huge numbers and watching them go up." charset="utf-8"/>
+    <h1 id="hiddenheader" style="display: none">Antimatter Dimensions NG^</h1>
     <script type="text/javascript" src="javascripts/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="javascripts/notify.js"></script>
     <link rel="stylesheet" type="text/css" href="stylesheets/styles.css?3">
-    <script>
-        (function(i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r;
-            i[r] = i[r] || function() {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date();
-            a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0];
-            a.async = 1;
-            a.src = g;
-            m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-        ga('create', 'UA-77268961-1', 'auto');
-        ga('send', 'pageview');
-
-    </script>
 </head>
 <img id="loading" src="images/Loading.png">
 <div id="snow" style="display: none; "></div>
@@ -77,23 +59,8 @@
         </div>
         <div id="shop" class="tab" style="font-size: 15px" >
             <div align="center">
-                <br>
-                <span id="kongip"> Double your IP gain from all sources. Forever. </span><br>
-                <button class="greedbtn" onclick="purchaseIP()">40 Kreds</button>
-                <br><br><br>
-                <span id="kongep"> Double your EP gain from all sources. Forever. </span><br>
-                <button class="greedbtn" onclick="purchaseEP()">50 Kreds</button>
-                <br><br><br>
-                <span id="kongdim"> Double all your dimension multipliers (dimensions 1-8). Forever. </span><br>
-                <button class="greedbtn" onclick="purchaseDimMult()">30 Kreds</button>
-                <br><br><br>
-                <span id="kongalldim"> Double ALL the dimension multipliers (Normal, Infinity and Time). Forever. </span><br>
-                <button class="greedbtn" onclick="purchaseAllDimMult()">60 Kreds</button>
-                <br><br><br>
-                <span>Get 6 hours worth of offline production. (Doesn't work for autobuyers)</span><br>
-                <button class="greedbtn" onclick="purchaseTimeSkip()">10 Kreds</button>
-                <br><br><br>
-                <span style="font-size: 12px"><b>Disclaimer: These are not required to progress in the game, they are just to help and support the developer.</b></span>
+              <br>
+              This part is deleted.
             </div>
         </div>
         <div id="eternitystore" class="tab" style="font-size: 15px; margin: 0 auto; display: none" align="center">
@@ -137,23 +104,23 @@
                 </table>
                 <table class="table" id="studytable">
                     <tr>
-                        <td><button class="timestudy" id="41" onclick="buyTimeStudy(41, 4)">Each galaxy gives a 1.2x multiplier on IP gained. <span>Cost: 4 Time Theorems</button></td>
-                        <td><button class="timestudy" id="42" onclick="buyTimeStudy(42, 6)">Galaxy requirement goes up 52 8ths instead of 60.<span>Cost: 6 Time Theorems</button></td>
+                        <td><button class="timestudy" id="41" onclick="buyTimeStudy(41, 4)">Each galaxy gives a 1.5x multiplier on IP gained. <span>Cost: 4 Time Theorems</button></td>
+                        <td><button class="timestudy" id="42" onclick="buyTimeStudy(42, 6)">Galaxy requirement goes up 48 8ths instead of 60.<span>Cost: 6 Time Theorems</button></td>
                     </tr>
                 </table>
                 <br>
                 <table class="table" id="studytable">
                     <tr>
                         <td style="opacity: 0;"><button class="timestudylocked"></button></td>
-                        <td><button class="timestudy" id="51" onclick="buyTimeStudy(51, 3)"><span id=51desc>You gain 1e15 times more IP</span>Cost: 3 Time Theorems</button></td>
+                        <td><button class="timestudy" id="51" onclick="buyTimeStudy(51, 3)"><span id=51desc>You gain 1e30 times more IP</span>Cost: 3 Time Theorems</button></td>
                         <td><button class="eternitychallengestudy" id="ec5unl">Eternity Challenge 5<span>Requirement: 200 galaxies<span>Cost: 100 Time Theorems</button></td>
                     </tr>
                 </table>
                 <table class="table" id="studytable">
                     <tr>
                         <td style="opacity: 0;"><button class="timestudylocked"></button></td>
-                        <td><button class="timestudy" id="61" onclick="buyTimeStudy(61, 3)">You gain 10x more EP<span>Cost: 3 Time Theorems</button></td>
-                        <td><button class="timestudy" id="62" onclick="buyTimeStudy(62, 3)">You gain replicanti 3 times faster<span>Cost: 3 Time Theorems</button></td>
+                        <td><button class="timestudy" id="61" onclick="buyTimeStudy(61, 3)">You gain 100x more EP<span>Cost: 3 Time Theorems</button></td>
+                        <td><button class="timestudy" id="62" onclick="buyTimeStudy(62, 3)">You gain replicanti 4 times faster<span>Cost: 3 Time Theorems</button></td>
                     </tr>
                 </table>
                 <br>
@@ -223,8 +190,8 @@
                 </table>
                 <table class="table" id="studytable">
                     <tr>
-                        <td><button class="timestudy" id="161" onclick="buyTimeStudy(161, 7)"><span id="161desc">1e616x multiplier on all normal dimensions</span>Cost: 7 Time Theorems</button></td>
-                        <td><button class="timestudy" id="162" onclick="buyTimeStudy(162, 7)"><span id="162desc">1e11x multiplier on all Infinity Dimensions</span>Cost: 7 Time Theorems</button></td>
+                        <td><button class="timestudy" id="161" onclick="buyTimeStudy(161, 7)"><span id="161desc">1e3080x multiplier on all normal dimensions</span>Cost: 7 Time Theorems</button></td>
+                        <td><button class="timestudy" id="162" onclick="buyTimeStudy(162, 7)"><span id="162desc">1e55x multiplier on all Infinity Dimensions</span>Cost: 7 Time Theorems</button></td>
                     </tr>
                 </table>
                 <table class="table" id="studytable">
@@ -321,9 +288,9 @@
                         <tr>
                             <td>
                                 <div style="text-align:center">
-                                    <a href="howto.html" target="_newtab">How to play  </a> |
-                                    <a href="about.html" target="_newtab" onclick="giveAchievement('A sound financial decision')">Donate   </a> |
-                                    <a href="changelog.html" target="_newtab">Changelog   </a> |
+                                    <a href="./howto.html" target="_newtab">How to play  </a> |
+                                    <a href="./about.html" target="_newtab" onclick="giveAchievement('A sound financial decision')">Donate   </a> |
+                                    <a href="./changelog.html" target="_newtab">Changelog   </a> |
                                     <a href="https://discord.gg/ST9NaXa" target="_newtab">Discord</a> |
                                     <a href="https://www.reddit.com/r/AntimatterDimensions/" target="_newtab">Subreddit</a>      |    <a href="https://ivark.github.io/savefixer/index.html" target="_newtab">Savefixer</a>
 
@@ -363,7 +330,7 @@
                             <div class="eternityupbtnbought" style="opacity: 0"></div>
                         </td>
                         <td>
-                            <button id="epmult" class="eternityupbtn" onclick="buyEPMult()">You gain 5 times more EP<p>Cost: 500 EP</button>
+                            <button id="epmult" class="eternityupbtn" onclick="buyEPMult()">You gain 10 times more EP<p>Cost: 500 EP</button>
                         </td>
                         <td>
                             <div class="eternityupbtnbought" style="opacity: 0"></div>
@@ -376,9 +343,9 @@
                         <tr>
                             <td>
                                 <div style="text-align:center">
-                                    <a href="howto.html" target="_newtab">How to play  </a> |
-                                    <a href="about.html" target="_newtab" onclick="giveAchievement('A sound financial decision')">Donate   </a> |
-                                    <a href="changelog.html" target="_newtab">Changelog   </a> |
+                                    <a href="./howto.html" ./target="_newtab">How to play  </a> |
+                                    <a href="./about.html" target="_newtab" onclick="giveAchievement('A sound financial decision')">Donate   </a> |
+                                    <a href="./changelog.html" target="_newtab">Changelog   </a> |
                                     <a href="https://discord.gg/ST9NaXa" target="_newtab">Discord</a> |
                                     <a href="https://www.reddit.com/r/AntimatterDimensions/" target="_newtab">Subreddit</a>      |    <a href="https://ivark.github.io/savefixer/index.html" target="_newtab">Savefixer</a>
                                 </div>
@@ -491,9 +458,9 @@
                         <tr>
                             <td>
                                 <div style="text-align:center">
-                                    <a href="howto.html" target="_newtab">How to play  </a> |
-                                    <a href="about.html" target="_newtab" onclick="giveAchievement('A sound financial decision')">Donate   </a> |
-                                    <a href="changelog.html" target="_newtab">Changelog   </a> |
+                                    <a href="./howto.html" target="_newtab">How to play  </a> |
+                                    <a href="./about.html" target="_newtab" onclick="giveAchievement('A sound financial decision')">Donate   </a> |
+                                    <a href="./changelog.html" target="_newtab">Changelog   </a> |
                                     <a href="https://discord.gg/ST9NaXa" target="_newtab">Discord</a> |
                                     <a href="https://www.reddit.com/r/AntimatterDimensions/" target="_newtab">Subreddit</a>      |    <a href="https://ivark.github.io/savefixer/index.html" target="_newtab">Savefixer</a>
                                 </div>
@@ -561,9 +528,9 @@
                         <tr>
                             <td>
                                 <div style="text-align:center">
-                                    <a href="howto.html" target="_newtab">How to play  </a> |
-                                    <a href="about.html" target="_newtab" onclick="giveAchievement('A sound financial decision')">Donate   </a> |
-                                    <a href="changelog.html" target="_newtab">Changelog   </a> |
+                                    <a href="./howto.html" target="_newtab">How to play  </a> |
+                                    <a href="./about.html" target="_newtab" onclick="giveAchievement('A sound financial decision')">Donate   </a> |
+                                    <a href="./changelog.html" target="_newtab">Changelog   </a> |
                                     <a href="https://discord.gg/ST9NaXa" target="_newtab">Discord</a> |
                                     <a href="https://www.reddit.com/r/AntimatterDimensions/" target="_newtab">Subreddit</a>      |    <a href="https://ivark.github.io/savefixer/index.html" target="_newtab">Savefixer</a>
                                 </div>
@@ -965,11 +932,11 @@
 
                 <table id="footer">
                     <tr>
-                        <td>
+                        <td>./
                             <div style="text-align:center">
-                                <a href="howto.html" target="_newtab">How to play  </a> |
-                                <a href="about.html" target="_newtab" onclick="giveAchievement('A sound financial decision')">Donate   </a> |
-                                <a href="changelog.html" target="_newtab">Changelog   </a> |
+                                <a href="./howto.html" target="_newtab">How to play  </a> |
+                                <a href="./about.html" target="_newtab" onclick="giveAchievement('A sound financial decision')">Donate   </a> |
+                                <a href="./changelog.html" target="_newtab">Changelog   </a> |
                                 <a href="https://discord.gg/ST9NaXa" target="_newtab">Discord</a> |
                                 <a href="https://www.reddit.com/r/AntimatterDimensions/" target="_newtab">Subreddit</a>      |    <a href="https://ivark.github.io/savefixer/index.html" target="_newtab">Savefixer</a>
 
@@ -1027,9 +994,9 @@
                     <tr>
                         <td>
                             <div style="text-align:center">
-                                <a href="howto.html" target="_newtab">How to play  </a> |
-                                <a href="about.html" target="_newtab" onclick="giveAchievement('A sound financial decision')">Donate   </a> |
-                                <a href="changelog.html" target="_newtab">Changelog   </a> |
+                                <a href="./howto.html" target="_newtab">How to play  </a> |
+                                <a href="./about.html" target="_newtab" onclick="giveAchievement('A sound financial decision')">Donate   </a> |
+                                <a href="./changelog.html" target="_newtab">Changelog   </a> |
                                 <a href="https://discord.gg/ST9NaXa" target="_newtab">Discord</a> |
                                 <a href="https://www.reddit.com/r/AntimatterDimensions/" target="_newtab">Subreddit</a>      |    <a href="https://ivark.github.io/savefixer/index.html" target="_newtab">Savefixer</a>
 
@@ -1130,9 +1097,9 @@
                     <tr>
                         <td>
                             <div style="text-align:center">
-                                <a href="howto.html" target="_newtab">How to play  </a> |
-                                <a href="about.html" target="_newtab" onclick="giveAchievement('A sound financial decision')">Donate   </a> |
-                                <a href="changelog.html" target="_newtab">Changelog   </a> |
+                                <a href="./howto.html" target="_newtab">How to play  </a> |
+                                <a href="./about.html" target="_newtab" onclick="giveAchievement('A sound financial decision')">Donate   </a> |
+                                <a href="./changelog.html" target="_newtab">Changelog   </a> |
                                 <a href="https://discord.gg/ST9NaXa" target="_newtab">Discord</a> |
                                 <a href="https://www.reddit.com/r/AntimatterDimensions/" target="_newtab">Subreddit</a>      |    <a href="https://ivark.github.io/savefixer/index.html" target="_newtab">Savefixer</a>
 
@@ -1579,9 +1546,9 @@
                     <tr>
                         <td>
                             <div style="text-align:center">
-                                <a href="howto.html" target="_newtab">How to play  </a> |
-                                <a href="about.html" target="_newtab" onclick="giveAchievement('A sound financial decision')">Donate   </a> |
-                                <a href="changelog.html" target="_newtab">Changelog   </a> |
+                                <a href="./howto.html" target="_newtab">How to play  </a> |
+                                <a href="./about.html" target="_newtab" onclick="giveAchievement('A sound financial decision')">Donate   </a> |
+                                <a href="./changelog.html" target="_newtab">Changelog   </a> |
                                 <a href="https://discord.gg/ST9NaXa" target="_newtab">Discord</a> |
                                 <a href="https://www.reddit.com/r/AntimatterDimensions/" target="_newtab">Subreddit</a>      |    <a href="https://ivark.github.io/savefixer/index.html" target="_newtab">Savefixer</a>
 
@@ -2098,9 +2065,9 @@
                 <tr>
                     <td>
                         <div style="text-align:center">
-                            <a href="howto.html" target="_newtab">How to play  </a> |
-                            <a href="about.html" target="_newtab" onclick="giveAchievement('A sound financial decision')">Donate   </a> |
-                            <a href="changelog.html" target="_newtab">Changelog   </a> |
+                            <a href="./howto.html" target="_newtab">How to play  </a> |
+                            <a href="./about.html" target="_newtab" onclick="giveAchievement('A sound financial decision')">Donate   </a> |
+                            <a href="./changelog.html" target="_newtab">Changelog   </a> |
                             <a href="https://discord.gg/ST9NaXa" target="_newtab">Discord</a> |
                             <a href="https://www.reddit.com/r/AntimatterDimensions/" target="_newtab">Subreddit</a>      |    <a href="https://ivark.github.io/savefixer/index.html" target="_newtab">Savefixer</a>
                         </div>
@@ -2130,7 +2097,7 @@
                         <button id="infi11" class="infinistorebtn1">Production increase over time <br>currently:</button>
                     </td>
                     <td>
-                        <button id="infi21" class="infinistorebtn2">Increase the multiplier for buying 10 Dimensions <br>2x -> 2.2x<br>Cost: 1 IP</button>
+                        <button id="infi21" class="infinistorebtn2">Increase the multiplier for buying 10 Dimensions <br>20x -> 24x<br>Cost: 1 IP</button>
                     </td>
                     <td>
                         <button id="infi31" class="infinistorebtn3">Production increase over time in current infinity<br>Cost: 3 IP</button>
@@ -2192,9 +2159,9 @@
                     <tr>
                         <td>
                             <div style="text-align:center">
-                                <a href="howto.html" target="_newtab">How to play  </a> |
-                                <a href="about.html" target="_newtab" onclick="giveAchievement('A sound financial decision')">Donate   </a> |
-                                <a href="changelog.html" target="_newtab">Changelog   </a> |
+                                <a href="./howto.html" target="_newtab">How to play  </a> |
+                                <a href="./about.html" target="_newtab" onclick="giveAchievement('A sound financial decision')">Donate   </a> |
+                                <a href="./changelog.html" target="_newtab">Changelog   </a> |
                                 <a href="https://discord.gg/ST9NaXa" target="_newtab">Discord</a> |
                                 <a href="https://www.reddit.com/r/AntimatterDimensions/" target="_newtab">Subreddit</a> |
                                 <a href="https://ivark.github.io/savefixer/index.html" target="_newtab">Savefixer</a>
@@ -2503,9 +2470,9 @@
                     <tr>
                         <td>
                             <div style="text-align:center">
-                                <a href="howto.html" target="_newtab">How to play  </a> |
-                                <a href="about.html" target="_newtab" onclick="giveAchievement('A sound financial decision')">Donate   </a> |
-                                <a href="changelog.html" target="_newtab">Changelog   </a> |
+                                <a href="./howto.html" target="_newtab">How to play  </a> |
+                                <a href="./about.html" target="_newtab" onclick="giveAchievement('A sound financial decision')">Donate   </a> |
+                                <a href="./changelog.html" target="_newtab">Changelog   </a> |
                                 <a href="https://discord.gg/ST9NaXa" target="_newtab">Discord</a> |
                                 <a href="https://www.reddit.com/r/AntimatterDimensions/" target="_newtab">Subreddit</a>      |    <a href="https://ivark.github.io/savefixer/index.html" target="_newtab">Savefixer</a>
 
@@ -2582,9 +2549,9 @@
                         <tr>
                             <td>
                                 <div style="text-align:center">
-                                    <a href="howto.html" target="_newtab">How to play  </a> |
-                                    <a href="about.html" target="_newtab" onclick="giveAchievement('A sound financial decision')">Donate   </a> |
-                                    <a href="changelog.html" target="_newtab">Changelog   </a> |
+                                    <a href="./howto.html" target="_newtab">How to play  </a> |
+                                    <a href="./about.html" target="_newtab" onclick="giveAchievement('A sound financial decision')">Donate   </a> |
+                                    <a href="./changelog.html" target="_newtab">Changelog   </a> |
                                     <a href="https://discord.gg/ST9NaXa" target="_newtab">Discord</a> |
                                     <a href="https://www.reddit.com/r/AntimatterDimensions/" target="_newtab">Subreddit</a>      |    <a href="https://ivark.github.io/savefixer/index.html" target="_newtab">Savefixer</a>
 
@@ -2620,9 +2587,9 @@
                     <tr>
                         <td>
                             <div style="text-align:center">
-                                <a href="howto.html" target="_newtab">How to play  </a> |
-                                <a href="about.html" target="_newtab" onclick="giveAchievement('A sound financial decision')">Donate   </a> |
-                                <a href="changelog.html" target="_newtab">Changelog   </a> |
+                                <a href="./howto.html" target="_newtab">How to play  </a> |
+                                <a href="./about.html" target="_newtab" onclick="giveAchievement('A sound financial decision')">Donate   </a> |
+                                <a href="./changelog.html" target="_newtab">Changelog   </a> |
                                 <a href="https://discord.gg/ST9NaXa" target="_newtab">Discord</a> |
                                 <a href="https://www.reddit.com/r/AntimatterDimensions/" target="_newtab">Subreddit</a>      |    <a href="https://ivark.github.io/savefixer/index.html" target="_newtab">Savefixer</a>
 
