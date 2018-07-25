@@ -5937,7 +5937,7 @@ var unspentBonus = 1
 var postc8Mult = new Decimal(0)
 var mult18 = 1
 var ec10bonus = new Decimal(1)
-setInterval( function() {
+function updatePow() {
     totalMult = Math.pow(player.totalmoney.e+1, 0.5)
     currentMult = Math.pow(player.money.e+1, 0.5)
     if (player.timestudy.studies.includes(31)) infinitiedMult = 1 + Math.pow(Math.log10(getInfinitied()+1)*10, 4)
@@ -5952,4 +5952,5 @@ setInterval( function() {
     } else {
         ec10bonus = new Decimal(1)
     }
-}, 100)
+}
+setInterval( updatePow(), 100)
