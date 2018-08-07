@@ -22,7 +22,7 @@ function getTickSpeedMultiplier() {
       if (player.achievements.includes("r86")) perGalaxy *= 1.01;
       if (player.timestudy.studies.includes(212)) perGalaxy *= Math.min(Math.pow(player.timeShards.max(2).log2(), 0.005), 1.1)
 
-      return baseMultiplier-(player.galaxies*perGalaxy);
+      return new Decimal(baseMultiplier-(player.galaxies*perGalaxy));
   } else {
       let baseMultiplier = 0.8
       if (player.currentChallenge == "challenge6" || player.currentChallenge == "postc1") baseMultiplier = 0.83
@@ -40,7 +40,7 @@ function getTickSpeedMultiplier() {
       if (player.timestudy.studies.includes(212)) galaxies *= Math.min(Math.pow(player.timeShards.max(2).log2(), 0.005), 1.1)
       if (player.timestudy.studies.includes(232)) galaxies *= Math.pow(1+player.galaxies/1000, 0.2)
 
-      return baseMultiplier * (Math.pow(perGalaxy, (galaxies-2)))
+      return Decimal.times(baseMultiplier, (Decimal.pow(perGalaxy, (galaxies-2))))
   }
 }
 
@@ -95,7 +95,7 @@ function buyMaxTickSpeed() {
       if (discriminant < 0) return false
       var buying = Math.floor((Math.sqrt(Math.pow(b, 2) - (c *a *4))-b)/(2 * a))+1
       if (buying <= 0) return false
-      player.tickspeed = player.tickspeed.times(Decimal.pow(mult, buying));
+      player.tickspeed = player.tickspeed.times(mult.pow(buying));
       if (player.challenges.includes("postc3") || player.currentChallenge == "postc3") player.postC3Reward = player.postC3Reward.times(Decimal.pow(1.05+(player.galaxies*0.005), buying))
       for (var i = 0; i<buying-1; i++) {
           player.tickSpeedCost = player.tickSpeedCost.times(player.tickspeedMultiplier)

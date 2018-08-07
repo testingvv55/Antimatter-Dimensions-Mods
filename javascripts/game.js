@@ -572,11 +572,11 @@ function updateDimensions() {
 
     if (canBuyTickSpeed() || player.currentEternityChall == "eterc9") {
         var tickmult = getTickSpeedMultiplier()
-        if (tickmult < 1e-9) document.getElementById("tickLabel").textContent = "Divide the tick interval by " + shortenDimensions(1 / tickmult) + '.'
+        if (tickmult.lt(1e-9)) document.getElementById("tickLabel").textContent = "Divide the tick interval by " + shortenDimensions(tickmult.pow(-1)) + '.'
         else {
             var places = 0
-            if (tickmult < 0.2) places = Math.floor(Math.log10(Math.round(1/tickmult)))
-            document.getElementById("tickLabel").textContent = 'Reduce the tick interval by ' + ((1 - tickmult) * 100).toFixed(places) + '%.'
+            if (tickmult.lt(0.2)) places = Math.floor(Math.log10(Math.round(1 / tickmult.toNumber())))
+            document.getElementById("tickLabel").textContent = 'Reduce the tick interval by ' + ((1 - tickmult.toNumber()) * 100).toFixed(places) + '%.'
         }
 
         document.getElementById("tickSpeed").style.visibility = "visible";
@@ -1787,7 +1787,7 @@ function galaxyReset() {
     if (player.achievements.includes("r54")) player.money = new Decimal(2e5).max(player.money);
     if (player.achievements.includes("r55")) player.money = new Decimal(1e10).max(player.money);
     if (player.achievements.includes("r78")) player.money = new Decimal(1e25).max(player.money);
-    player.tickspeed = player.tickspeed.times(Decimal.pow(getTickSpeedMultiplier(), player.totalTickGained))
+    player.tickspeed = player.tickspeed.times(getTickSpeedMultiplier().pow(player.totalTickGained))
     if (player.achievements.includes("r66")) player.tickspeed = player.tickspeed.times(0.98);
     if (player.galaxies >= 540 && player.replicanti.galaxies == 0) giveAchievement("Unique snowflakes")
     updateTickSpeed();
@@ -3028,7 +3028,7 @@ document.getElementById("bigcrunch").onclick = function () {
         if (player.challenges.length >= 2) giveAchievement("Daredevil");
         if (player.challenges.length == 12) giveAchievement("AntiChallenged");
         resetInfDimensions();
-        player.tickspeed = player.tickspeed.times(Decimal.pow(getTickSpeedMultiplier(), player.totalTickGained))
+        player.tickspeed = player.tickspeed.times(getTickSpeedMultiplier().pow(player.totalTickGained))
         updateTickSpeed();
         if (player.challenges.length == 20) giveAchievement("Anti-antichallenged");
         IPminpeak = new Decimal(0)
@@ -3638,7 +3638,7 @@ function startChallenge(name, target) {
     document.getElementById("replicantireset").innerHTML = "Reset replicanti amount, but get a free galaxy<br>"+player.replicanti.galaxies + " replicated galaxies created."
 
     resetInfDimensions();
-    player.tickspeed = player.tickspeed.times(Decimal.pow(getTickSpeedMultiplier(), player.totalTickGained))
+    player.tickspeed = player.tickspeed.times(getTickSpeedMultiplier().pow(player.totalTickGained))
     updateTickSpeed();
 
     if (player.resets == 0 && player.currentChallenge == "") {
@@ -4510,7 +4510,7 @@ setInterval(function() {
     document.getElementById("replicantiunlock").className = (player.infinityPoints.gte(1e140)) ? "storebtn" : "unavailablebtn"
     updateTheoremButtons()
 
-    if (getTickSpeedMultiplier() < 0.001) giveAchievement("Do you even bend time bro?")
+    if (getTickSpeedMultiplier().lt(0.001)) giveAchievement("Do you even bend time bro?")
 
     if (player.eternities > 9) document.getElementById("bulklabel").textContent = "Buy max dimboosts every X seconds:"
     else document.getElementById("bulklabel").textContent = "Bulk DimBoost Amount:"
@@ -4828,7 +4828,7 @@ function gameLoop(diff) {
         if (player.timestudy.studies.includes(171)) gain = Math.ceil(new Decimal(player.timeShards).dividedBy(player.tickThreshold).log10() / Math.log10(1.25))
         else gain = Math.ceil(new Decimal(player.timeShards).dividedBy(player.tickThreshold).log10() / Math.log10(1.33))
         player.totalTickGained += gain
-        player.tickspeed = player.tickspeed.times(Decimal.pow(getTickSpeedMultiplier(), gain))
+        player.tickspeed = player.tickspeed.times(getTickSpeedMultiplier().pow(gain))
         if (player.timestudy.studies.includes(171)) player.tickThreshold = new Decimal(1).times(1.25).pow(player.totalTickGained)
         else player.tickThreshold = new Decimal(1).times(1.33).pow(player.totalTickGained)
         document.getElementById("totaltickgained").textContent = "You've gained "+player.totalTickGained.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")+" tickspeed upgrades."

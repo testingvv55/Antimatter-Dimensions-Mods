@@ -200,7 +200,7 @@ if (player.currentChallenge == "postc2") {
   }
 
 
-  player.tickspeed = player.tickspeed.times(Decimal.pow(getTickSpeedMultiplier(), player.totalTickGained))
+  player.tickspeed = player.tickspeed.times(getTickSpeedMultiplier().pow(player.totalTickGained))
   updateTickSpeed()
   if (player.challenges.includes("challenge1")) player.money = new Decimal(100).max(player.money)
   if (player.achievements.includes("r37")) player.money = new Decimal(1000).max(player.money);
@@ -244,7 +244,7 @@ document.getElementById("softReset").onclick = function () {
   auto = false;
   if (player.infinityUpgrades.includes("bulkBoost")) maxBuyDimBoosts(true);
   else softReset(1)
-  
+
   for (var tier = 1; tier<9; tier++) {
     var name = TIER_NAMES[tier];
     var mult = getDimensionBoostPower().pow(player.resets + 1 - tier)
