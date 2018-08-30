@@ -21,7 +21,6 @@ if (player.options.notation === undefined) player.options.notation = "Standard";
   if (player.options.sacrificeConfirmation === undefined) player.options.sacrificeConfirmation = true;
   if (player.options.retryChallenge === undefined) player.options.retryChallenge = false;
   if (player.options.bulkOn === undefined) player.options.bulkOn = true
-  if (player.options.cloud === undefined) player.options.cloud = true
   if (player.options.hotkeys === undefined) player.options.hotkeys = true
   if (player.options.eternityconfirm === undefined) player.options.eternityconfirm = true
   if (player.options.themes === undefined) player.options.themes = "Normal"
@@ -368,8 +367,6 @@ if (player.version < 5) {
   toggleChallengeRetry()
   toggleBulk()
   toggleBulk()
-  toggleCloud()
-  toggleCloud()
   respecToggle()
   respecToggle()
   toggleEternityConf()
@@ -401,7 +398,7 @@ if (player.version < 5) {
 
 
   if (player.break == true) document.getElementById("break").textContent = "FIX INFINITY"
-  document.getElementById("infiMult").innerHTML = "Multiply infinity points from all sources by 2 <br>currently: "+shortenDimensions(player.infMult.times(kongIPMult)) +"x<br>Cost: "+shortenCosts(player.infMultCost)+" IP"
+  document.getElementById("infiMult").innerHTML = "Multiply infinity points from all sources by 2 <br>currently: "+shortenDimensions(player.infMult) +"x<br>Cost: "+shortenCosts(player.infMultCost)+" IP"
 
   document.getElementById("notation").textContent = "Notation: " + player.options.notation
 
@@ -543,7 +540,7 @@ if (player.version < 5) {
   else document.getElementById("chartOnOff").checked = false
   if (player.options.chart.dips) document.getElementById("chartDipsOnOff").checked = true
   else document.getElementById("chartDipsOnOff").checked = false
- 
+
   if (player.options.theme == "Dark" || player.options.theme == "Dark Metro") {
     Chart.defaults.global.defaultFontColor = '#888';
     normalDimChart.data.datasets[0].borderColor = '#888'
@@ -592,19 +589,6 @@ if (player.version < 5) {
       simulateTime(diff/1000)
   }
 
-}
-
-function load_cloud_save(saveId, cloudPlayer) {
-  saves[saveId] = cloudPlayer;
-
-  if (window.location.href.split("//")[1].length > 20) set_save('dimensionTestSave', saveId, cloudPlayer);
-  else set_save('dimensionSave', saveId, cloudPlayer);
-
-  if (currentSave == saveId) {
-    load_game();
-    updateChallenges();
-    transformSaveToDecimal();
-  }
 }
 
 function load_game(root) {

@@ -39,17 +39,17 @@ function buyWithEP() {
 }
 
 function maxTheorems() {
-  var AMowned = player.timestudy.amcost.e / 20000 - 1
+  var AMowned = player.timestudy.amcost.logarithm / 20000 - 1
   if (player.money.gte(player.timestudy.amcost)) {
-    player.timestudy.amcost.e = Math.floor(player.money.e / 20000 + 1) * 20000
-    player.timestudy.theorem += Math.floor(player.money.e / 20000) - AMowned
-    player.money = player.money.minus(Decimal.fromMantissaExponent(1, Math.floor(player.money.e / 20000) * 20000))
+    player.timestudy.amcost.logarithm = Math.floor(player.money.logarithm / 20000 + 1) * 20000
+    player.timestudy.theorem += Math.floor(player.money.logarithm / 20000) - AMowned
+    player.money = player.money.minus(Decimal.fromMantissaExponent(1, Math.floor(player.money.logarithm / 20000) * 20000))
   }
-  var IPowned = player.timestudy.ipcost.e / 100
+  var IPowned = player.timestudy.ipcost.logarithm / 100
   if (player.infinityPoints.gte(player.timestudy.ipcost)) {
-    player.timestudy.ipcost.e = Math.floor(player.infinityPoints.e / 100 + 1) * 100
-    player.timestudy.theorem += Math.floor(player.infinityPoints.e / 100 + 1) - IPowned
-    player.infinityPoints = player.infinityPoints.minus(Decimal.fromMantissaExponent(1, Math.floor(player.infinityPoints.e / 100) * 100))
+    player.timestudy.ipcost.logarithm = Math.floor(player.infinityPoints.logarithm / 100 + 1) * 100
+    player.timestudy.theorem += Math.floor(player.infinityPoints.logarithm / 100 + 1) - IPowned
+    player.infinityPoints = player.infinityPoints.minus(Decimal.fromMantissaExponent(1, Math.floor(player.infinityPoints.logarithm / 100) * 100))
   }
   var EPowned = Math.floor(player.timestudy.epcost.log2())
   if (Math.floor(player.eternityPoints.log2() + 1) - EPowned > 50) {
