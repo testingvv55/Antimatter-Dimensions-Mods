@@ -52,12 +52,12 @@ var player = {
     seventhPow: new Decimal(1),
     eightPow: new Decimal(1),
     sacrificed: new Decimal(0),
-    achievements: [],
+    achievements: ["r123"],
     infinityUpgrades: ["skipReset1","skipReset2","skipReset3","skipResetGalaxy"],
     challenges: [],
     currentChallenge: "",
     infinityPoints: new Decimal(0),
-    infinitied: 0,
+    infinitied: 1,
     infinitiedBank: 0,
     totalTimePlayed: 0,
     bestInfinityTime: 9999999999,
@@ -99,7 +99,7 @@ var player = {
     postC4Tier: 0,
     postC3Reward: new Decimal(1),
     eternityPoints: new Decimal(0),
-    eternities: 0,
+    eternities: 100,
     thisEternity: 0,
     bestEternity: 9999999999,
     eternityUpgrades: [],
@@ -236,7 +236,7 @@ var player = {
         epcost: new Decimal(1),
         studies: [],
     },
-    eternityChalls: {},
+    eternityChalls: {"eterc1":5,"eterc2":5,"eterc3":5,"eterc4":5,"eterc5":5,"eterc6":5,"eterc7":5,"eterc8":5,"eterc9":5,"eterc10":5,"eterc11":5,"eterc12":5},
     eternityChallGoal: new Decimal(Number.MAX_VALUE),
     currentEternityChall: "",
     eternityChallUnlocked: 0,
@@ -1134,6 +1134,10 @@ document.getElementById("postinfi31").onclick = function() {
         player.infinityPoints = player.infinityPoints.minus(player.tickSpeedMultDecreaseCost)
         player.tickSpeedMultDecreaseCost *= 5
         player.tickSpeedMultDecrease--;
+        if (player.tickSpeedMultDecrease==2){
+          player.tickSpeedMultiplierDecrease=1.65;
+          $.notify("Decreased tickspeed cost multiplier to 1.65x by the NG+.","info");
+        }
         document.getElementById("postinfi31").innerHTML = "Tickspeed cost multiplier increase <br>"+player.tickSpeedMultDecrease+"x -> "+(player.tickSpeedMultDecrease-1)+"x<br>Cost: "+shortenCosts(player.tickSpeedMultDecreaseCost) +" IP"
         if (player.tickSpeedMultDecrease <= 2) document.getElementById("postinfi31").innerHTML = "Tickspeed cost multiplier increase <br>"+player.tickSpeedMultDecrease+"x"
     }
@@ -1160,6 +1164,10 @@ document.getElementById("postinfi42").onclick = function() {
         player.infinityPoints = player.infinityPoints.minus(player.dimensionMultDecreaseCost)
         player.dimensionMultDecreaseCost *= 5000
         player.dimensionMultDecrease--;
+        if (player.tickSpeedMultDecrease==3){
+          player.tickSpeedMultiplierDecrease=2;
+          $.notify("Decreased dimension cost multiplier to 2x by the NG+.","info");
+        }
         document.getElementById("postinfi42").innerHTML = "Dimension cost multiplier increase <br>"+player.dimensionMultDecrease+"x -> "+(player.dimensionMultDecrease-1)+"x<br>Cost: "+shortenCosts(player.dimensionMultDecreaseCost) +" IP"
         if (player.dimensionMultDecrease <= 3) document.getElementById("postinfi42").innerHTML = "Dimension cost multiplier increase <br>"+player.dimensionMultDecrease.toFixed(1)+"x"
     }
@@ -2230,18 +2238,18 @@ function updateAutobuyers() {
     var autoSacrifice = new Autobuyer(13)
 
 
-    autoBuyerDim1.interval = 1500
-    autoBuyerDim2.interval = 2000
-    autoBuyerDim3.interval = 2500
-    autoBuyerDim4.interval = 3000
-    autoBuyerDim5.interval = 4000
-    autoBuyerDim6.interval = 5000
-    autoBuyerDim7.interval = 6000
-    autoBuyerDim8.interval = 7500
-    autoBuyerDimBoost.interval = 8000
-    autoBuyerGalaxy.interval = 150000
-    autoBuyerTickspeed.interval = 5000
-    autoBuyerInf.interval = 300000
+    autoBuyerDim1.interval = 750
+    autoBuyerDim2.interval = 1000
+    autoBuyerDim3.interval = 1250
+    autoBuyerDim4.interval = 1500
+    autoBuyerDim5.interval = 2000
+    autoBuyerDim6.interval = 2500
+    autoBuyerDim7.interval = 3000
+    autoBuyerDim8.interval = 3750
+    autoBuyerDimBoost.interval = 4000
+    autoBuyerGalaxy.interval = 75000
+    autoBuyerTickspeed.interval = 2500
+    autoBuyerInf.interval = 150000
 
     autoSacrifice.interval = 100
     autoSacrifice.priority = 5
@@ -2256,51 +2264,51 @@ function updateAutobuyers() {
     autoBuyerDim8.tier = 8
     autoBuyerTickSpeed.tier = 9
 
-    if (player.challenges.includes("challenge1") && player.autobuyers[0] == 1) {
+    if (player.autobuyers[0] == 1) {
         player.autobuyers[0] = autoBuyerDim1
         document.getElementById("autoBuyer1").style.display = "inline-block"
     }
-    if (player.challenges.includes("challenge2") && player.autobuyers[1] == 2) {
+    if (player.autobuyers[1] == 2) {
         player.autobuyers[1] = autoBuyerDim2
         document.getElementById("autoBuyer2").style.display = "inline-block"
     }
-    if (player.challenges.includes("challenge3") && player.autobuyers[2] == 3) {
+    if (player.autobuyers[2] == 3) {
         player.autobuyers[2] = autoBuyerDim3
         document.getElementById("autoBuyer3").style.display = "inline-block"
     }
-    if (player.challenges.includes("challenge4") && player.autobuyers[9] == 10) {
+    if (player.autobuyers[9] == 10) {
         player.autobuyers[9] = autoBuyerDimBoost
         document.getElementById("autoBuyerDimBoost").style.display = "inline-block"
     }
-    if (player.challenges.includes("challenge5") && player.autobuyers[8] == 9) {
+    if (player.autobuyers[8] == 9) {
         player.autobuyers[8] = autoBuyerTickspeed
         document.getElementById("autoBuyerTickSpeed").style.display = "inline-block"
     }
-    if (player.challenges.includes("challenge6") && player.autobuyers[4] == 5) {
+    if (player.autobuyers[4] == 5) {
         player.autobuyers[4] = autoBuyerDim5
         document.getElementById("autoBuyer5").style.display = "inline-block"
     }
-    if (player.challenges.includes("challenge7") && player.autobuyers[11] == 12) {
+    if (player.autobuyers[11] == 12) {
         player.autobuyers[11] = autoBuyerInf
         document.getElementById("autoBuyerInf").style.display = "inline-block"
     }
-    if (player.challenges.includes("challenge8") && player.autobuyers[3] == 4) {
+    if (player.autobuyers[3] == 4) {
         player.autobuyers[3] = autoBuyerDim4
         document.getElementById("autoBuyer4").style.display = "inline-block"
     }
-    if (player.challenges.includes("challenge9") && player.autobuyers[6] == 7) {
+    if (player.autobuyers[6] == 7) {
         player.autobuyers[6] = autoBuyerDim7
         document.getElementById("autoBuyer7").style.display = "inline-block"
     }
-    if (player.challenges.includes("challenge10") && player.autobuyers[5] == 6) {
+    if (player.autobuyers[5] == 6) {
         player.autobuyers[5] = autoBuyerDim6
         document.getElementById("autoBuyer6").style.display = "inline-block"
     }
-    if (player.challenges.includes("challenge11") && player.autobuyers[7] == 8) {
+    if (player.autobuyers[7] == 8) {
         player.autobuyers[7] = autoBuyerDim8
         document.getElementById("autoBuyer8").style.display = "inline-block"
     }
-    if (player.challenges.includes("challenge12") && player.autobuyers[10] == 11) {
+    if (player.autobuyers[10] == 11) {
         player.autobuyers[10] = autoBuyerGalaxy
         document.getElementById("autoBuyerGalaxies").style.display = "inline-block"
     }
@@ -5750,6 +5758,7 @@ document.getElementById("hiddenheader").style.display = "none";
 
 window.onload = function() {
     startInterval()
+    updateAutobuyers()
     setTimeout(function() {
         document.getElementById("container").style.display = "block"
         document.getElementById("loading").style.display = "none"

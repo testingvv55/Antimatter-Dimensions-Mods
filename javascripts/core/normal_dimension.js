@@ -172,7 +172,7 @@ function hasInfinityMult(tier) {
     }
 
     function getDimensionPowerMultiplier(tier) {
-        let dimMult = 20;
+        let dimMult = 60;
 
 
         if (player.currentChallenge == "challenge9" || player.currentChallenge == "postc1") dimMult = Math.pow(10/0.30,Math.random())*0.30
