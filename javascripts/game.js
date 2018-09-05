@@ -1135,7 +1135,7 @@ document.getElementById("postinfi31").onclick = function() {
         player.tickSpeedMultDecreaseCost *= 5
         player.tickSpeedMultDecrease--;
         if (player.tickSpeedMultDecrease==2){
-          player.tickSpeedMultiplierDecrease=1.65;
+          player.tickSpeedMultDecrease=1.65;
           $.notify("Decreased tickspeed cost multiplier to 1.65x by the NG+.","info");
         }
         document.getElementById("postinfi31").innerHTML = "Tickspeed cost multiplier increase <br>"+player.tickSpeedMultDecrease+"x -> "+(player.tickSpeedMultDecrease-1)+"x<br>Cost: "+shortenCosts(player.tickSpeedMultDecreaseCost) +" IP"
@@ -1164,8 +1164,8 @@ document.getElementById("postinfi42").onclick = function() {
         player.infinityPoints = player.infinityPoints.minus(player.dimensionMultDecreaseCost)
         player.dimensionMultDecreaseCost *= 5000
         player.dimensionMultDecrease--;
-        if (player.tickSpeedMultDecrease==3){
-          player.tickSpeedMultiplierDecrease=2;
+        if (player.dimensionMultDecrease==3){
+          player.dimensionMultDecrease=2;
           $.notify("Decreased dimension cost multiplier to 2x by the NG+.","info");
         }
         document.getElementById("postinfi42").innerHTML = "Dimension cost multiplier increase <br>"+player.dimensionMultDecrease+"x -> "+(player.dimensionMultDecrease-1)+"x<br>Cost: "+shortenCosts(player.dimensionMultDecreaseCost) +" IP"
@@ -5759,6 +5759,14 @@ document.getElementById("hiddenheader").style.display = "none";
 window.onload = function() {
     startInterval()
     updateAutobuyers()
+    if (player.tickSpeedMultDecrease==2){
+      player.tickSpeedMultDecrease=1.65;
+      $.notify("Decreased tickspeed cost multiplier to 1.65x by the NG+.","info");
+    }
+    if (player.dimensionMultDecrease==3){
+      player.dimensionMultDecrease=2;
+      $.notify("Decreased dimension cost multiplier to 2x by the NG+.","info");
+    }
     setTimeout(function() {
         document.getElementById("container").style.display = "block"
         document.getElementById("loading").style.display = "none"
