@@ -296,7 +296,7 @@ var player = {
             eternity: true,
             tachyonParticles: true,
         }
-    }
+    },
     aarexModifications:{newGameExpVersion:1}//Aarex's AD support
 
 };
@@ -1724,7 +1724,7 @@ function galaxyReset() {
         dead: player.dead,
         dilation: player.dilation,
         why: player.why,
-        options: player.options
+        options: player.options,
         aarexModifications: player.aarexModifications
     };
 
@@ -2951,7 +2951,7 @@ document.getElementById("bigcrunch").onclick = function () {
             dead: player.dead,
             dilation: player.dilation,
             why: player.why,
-            options: player.options
+            options: player.options,
             aarexModifications: player.aarexModifications
         };
 
@@ -3318,7 +3318,7 @@ function eternity(force, auto) {
                 rebuyables: player.dilation.rebuyables
             },
             why: player.why,
-            options: player.options
+            options: player.options,
             aarexModifications: player.aarexModifications
         };
         if (player.respec) respecTimeStudies()
@@ -3558,7 +3558,7 @@ function startChallenge(name, target) {
       dead: player.dead,
       dilation: player.dilation,
       why: player.why,
-      options: player.options
+      options: player.options,
       aarexModifications: player.aarexModifications
     };
 	if (player.currentChallenge == "challenge10" || player.currentChallenge == "postc1") {
@@ -4117,7 +4117,7 @@ function startEternityChallenge(name, startgoal, goalIncrease) {
                 rebuyables: player.dilation.rebuyables
             },
             why: player.why,
-            options: player.options
+            options: player.options,
             aarexModifications: player.aarexModifications
         };
 
