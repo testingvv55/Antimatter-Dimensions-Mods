@@ -297,6 +297,7 @@ var player = {
             tachyonParticles: true,
         }
     }
+    aarexModifications:{newGameExpVersion:1}//Aarex's AD support
 
 };
 
@@ -1724,6 +1725,7 @@ function galaxyReset() {
         dilation: player.dilation,
         why: player.why,
         options: player.options
+        aarexModifications: player.aarexModifications
     };
 
     if (player.currentChallenge == "challenge10" || player.currentChallenge == "postc1") {
@@ -1901,6 +1903,8 @@ document.getElementById("importbtn").onclick = function () {
         mult18 = new Decimal(1)
         ec10bonus = new Decimal(1)
         player = save_data;
+        if (!player.aarexModifications) player.aarexModifications = {newGameExpVersion: 1};
+        if (!player.aarexModifications.newGameExpVersion) player.aarexModifications.newGameExpVersion = 1;
         save_game();
         load_game();
         updateChallenges()
@@ -2948,6 +2952,7 @@ document.getElementById("bigcrunch").onclick = function () {
             dilation: player.dilation,
             why: player.why,
             options: player.options
+            aarexModifications: player.aarexModifications
         };
 
         if (player.bestInfinityTime <= 0.01) giveAchievement("Less than or equal to 0.001");
@@ -3314,6 +3319,7 @@ function eternity(force, auto) {
             },
             why: player.why,
             options: player.options
+            aarexModifications: player.aarexModifications
         };
         if (player.respec) respecTimeStudies()
         player.respec = false
@@ -3553,6 +3559,7 @@ function startChallenge(name, target) {
       dilation: player.dilation,
       why: player.why,
       options: player.options
+      aarexModifications: player.aarexModifications
     };
 	if (player.currentChallenge == "challenge10" || player.currentChallenge == "postc1") {
         player.thirdCost = new Decimal(100)
@@ -4111,6 +4118,7 @@ function startEternityChallenge(name, startgoal, goalIncrease) {
             },
             why: player.why,
             options: player.options
+            aarexModifications: player.aarexModifications
         };
 
         if (player.replicanti.unl) player.replicanti.amount = new Decimal(1)
