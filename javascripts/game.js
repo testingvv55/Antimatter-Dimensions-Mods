@@ -296,7 +296,8 @@ var player = {
             eternity: true,
             tachyonParticles: true,
         }
-    }
+    },
+    aarexModifications:{newGameExpVersion:1}//Aarex's AD support
 
 };
 
@@ -1731,7 +1732,8 @@ function galaxyReset() {
         dead: player.dead,
         dilation: player.dilation,
         why: player.why,
-        options: player.options
+        options: player.options,
+        aarexModifications: player.aarexModifications
     };
 
     if (player.currentChallenge == "challenge10" || player.currentChallenge == "postc1") {
@@ -1909,6 +1911,8 @@ document.getElementById("importbtn").onclick = function () {
         mult18 = new Decimal(1)
         ec10bonus = new Decimal(1)
         player = save_data;
+        if (!player.aarexModifications) player.aarexModifications = {newGameExpVersion: 1};
+        if (!player.aarexModifications.newGameExpVersion) player.aarexModifications.newGameExpVersion = 1;
         save_game();
         load_game();
         updateChallenges()
@@ -2955,7 +2959,8 @@ document.getElementById("bigcrunch").onclick = function () {
             dead: player.dead,
             dilation: player.dilation,
             why: player.why,
-            options: player.options
+            options: player.options,
+            aarexModifications: player.aarexModifications
         };
 
         if (player.bestInfinityTime <= 0.01) giveAchievement("Less than or equal to 0.001");
@@ -3321,7 +3326,8 @@ function eternity(force, auto) {
                 rebuyables: player.dilation.rebuyables
             },
             why: player.why,
-            options: player.options
+            options: player.options,
+            aarexModifications: player.aarexModifications
         };
         if (player.respec) respecTimeStudies()
         player.respec = false
@@ -3560,7 +3566,8 @@ function startChallenge(name, target) {
       dead: player.dead,
       dilation: player.dilation,
       why: player.why,
-      options: player.options
+      options: player.options,
+      aarexModifications: player.aarexModifications
     };
 	if (player.currentChallenge == "challenge10" || player.currentChallenge == "postc1") {
         player.thirdCost = new Decimal(100)
@@ -4118,7 +4125,8 @@ function startEternityChallenge(name, startgoal, goalIncrease) {
                 rebuyables: player.dilation.rebuyables
             },
             why: player.why,
-            options: player.options
+            options: player.options,
+            aarexModifications: player.aarexModifications
         };
 
         if (player.replicanti.unl) player.replicanti.amount = new Decimal(1)
