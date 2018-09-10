@@ -2112,7 +2112,7 @@ document.getElementById("notation").onclick = function () {
     setAchieveTooltip();
     updateCosts();
     updateDilationUpgradeCosts()
-    document.getElementById("epmult").innerHTML = "You gain 5 times more EP<p>Currently: "+shortenDimensions(player.epmult)+"x<p>Cost: "+shortenDimensions(player.epmultCost)+" EP"
+    document.getElementById("epmult").innerHTML = "You gain 10 times more EP<p>Currently: "+shortenDimensions(player.epmult)+"x<p>Cost: "+shortenDimensions(player.epmultCost)+" EP"
 };
 
 
